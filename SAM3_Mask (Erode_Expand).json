@@ -1,0 +1,853 @@
+{
+  "id": "992bc798-9e03-4bb2-8b9e-17d2f507b175",
+  "revision": 0,
+  "last_node_id": 22,
+  "last_link_id": 27,
+  "nodes": [
+    {
+      "id": 4,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -799.8731603725352,
+        6244.706253836236
+      ],
+      "size": [
+        342.7722032107081,
+        126.42140412805293
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "Green organisms"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "VHS_VideoInfo",
+      "pos": [
+        -838.2765143619814,
+        6594.445872613495
+      ],
+      "size": [
+        234.931640625,
+        206
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "source_fps🟨",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "source_frame_count🟨",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "source_duration🟨",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "source_width🟨",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "source_height🟨",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "loaded_fps🟦",
+          "type": "FLOAT",
+          "links": [
+            25
+          ]
+        },
+        {
+          "name": "loaded_frame_count🟦",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "loaded_duration🟦",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "loaded_width🟦",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "loaded_height🟦",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoInfo",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": {}
+    },
+    {
+      "id": 7,
+      "type": "GrowMaskWithBlur",
+      "pos": [
+        57.058199087217815,
+        6372.841685935713
+      ],
+      "size": [
+        299.84375,
+        246
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 27
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "mask_inverted",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GrowMaskWithBlur",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        4,
+        0,
+        true,
+        false,
+        1.3,
+        1,
+        1,
+        false
+      ]
+    },
+    {
+      "id": 9,
+      "type": "SAM3_TrackToMask",
+      "pos": [
+        65.32945404075298,
+        5928.383052948639
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "track_data",
+          "name": "track_data",
+          "type": "SAM3_TRACK_DATA",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "masks",
+          "type": "MASK",
+          "links": [
+            26
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SAM3_TrackToMask",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "0"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "DilateErodeMask",
+      "pos": [
+        71.18830595051855,
+        6127.701872613504
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "masks",
+          "type": "MASK",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        },
+        "Node name for S&R": "DilateErodeMask"
+      },
+      "widgets_values": [
+        -2,
+        "circle"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "MaskToImage",
+      "pos": [
+        478.1836283408149,
+        5824.016112941639
+      ],
+      "size": [
+        193.2779296875,
+        26
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskToImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 15,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        -1162.6105343640436,
+        5886.7306859357095
+      ],
+      "size": [
+        241.84130859375,
+        718.6071132547968
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            19,
+            21
+          ]
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadVideo",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": {
+        "video": "02_all_HD.mp4",
+        "force_rate": 0,
+        "custom_width": 0,
+        "custom_height": 0,
+        "frame_load_cap": 0,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "format": "AnimateDiff",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "02_all_HD.mp4",
+            "type": "input",
+            "format": "video/mp4",
+            "force_rate": 0,
+            "custom_width": 0,
+            "custom_height": 0,
+            "frame_load_cap": 0,
+            "skip_first_frames": 0,
+            "select_every_nth": 1
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -343.2447800671679,
+        5764.016976821183
+      ],
+      "size": [
+        247.88772475673932,
+        99.22845973573749
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            4
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "sam3.1_multiplex_fp16.safetensors"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "SAM3_VideoTrack",
+      "pos": [
+        -348.1741182087271,
+        5909.609534987626
+      ],
+      "size": [
+        275.80859375,
+        166
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19
+        },
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 2
+        },
+        {
+          "label": "initial_mask",
+          "name": "initial_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "label": "conditioning",
+          "name": "conditioning",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "track_data",
+          "type": "SAM3_TRACK_DATA",
+          "links": [
+            11,
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SAM3_VideoTrack",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        0.5,
+        4,
+        1
+      ]
+    },
+    {
+      "id": 16,
+      "type": "SAM3_TrackPreview",
+      "pos": [
+        -344.5628239016599,
+        6121.752366200203
+      ],
+      "size": [
+        270,
+        574
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "track_data",
+          "name": "track_data",
+          "type": "SAM3_TRACK_DATA",
+          "link": 22
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 21
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SAM3_TrackPreview",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        0.5,
+        24
+      ]
+    },
+    {
+      "id": 17,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        474.23207609834174,
+        5897.32156620021
+      ],
+      "size": [
+        254.76999999999998,
+        765.3688888888889
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 23
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "name": "frame_rate",
+          "type": "FLOAT",
+          "widget": {
+            "name": "frame_rate"
+          },
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": {
+        "frame_rate": 24,
+        "loop_count": 0,
+        "filename_prefix": "Mask",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00172.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 24,
+            "workflow": "AnimateDiff_00172.png",
+            "fullpath": "C:\\AllComfyui\\ComfyUI_windows_portable_nvidia\\ComfyUI_windows_portable\\ComfyUI\\output\\AnimateDiff_00172.mp4"
+          }
+        }
+      }
+    }
+  ],
+  "links": [
+    [
+      2,
+      2,
+      0,
+      3,
+      1,
+      "MODEL"
+    ],
+    [
+      3,
+      4,
+      0,
+      3,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      4,
+      2,
+      1,
+      4,
+      0,
+      "CLIP"
+    ],
+    [
+      11,
+      3,
+      0,
+      9,
+      0,
+      "SAM3_TRACK_DATA"
+    ],
+    [
+      12,
+      7,
+      0,
+      10,
+      0,
+      "MASK"
+    ],
+    [
+      19,
+      15,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      21,
+      15,
+      0,
+      16,
+      1,
+      "IMAGE"
+    ],
+    [
+      22,
+      3,
+      0,
+      16,
+      0,
+      "SAM3_TRACK_DATA"
+    ],
+    [
+      23,
+      10,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      24,
+      15,
+      3,
+      18,
+      0,
+      "VHS_VIDEOINFO"
+    ],
+    [
+      25,
+      18,
+      5,
+      17,
+      4,
+      "FLOAT"
+    ],
+    [
+      26,
+      9,
+      0,
+      22,
+      0,
+      "MASK"
+    ],
+    [
+      27,
+      22,
+      0,
+      7,
+      0,
+      "MASK"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "object",
+      "bounding": [
+        -819.5531603725354,
+        6156.556253836236,
+        390.602203210708,
+        252.4014041280525
+      ],
+      "color": "#8A8",
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Select Mask (use , )",
+      "bounding": [
+        42.019454040752876,
+        5836.603052948638,
+        315.4100000000001,
+        177.9300000000003
+      ],
+      "color": "#88A",
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Mask Edit (expand)",
+      "bounding": [
+        20.438199087217818,
+        6255.651685935712,
+        367.0337499999998,
+        404.64999999999964
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Mask Edit (Erode)",
+      "bounding": [
+        18.596305950518527,
+        6041.729872613502,
+        360.5430000000001,
+        191.28199999999924
+      ],
+      "color": "#A88",
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "Input Video",
+      "bounding": [
+        -1219.1955343640434,
+        5803.42068593571,
+        335.04630859375015,
+        849.1851132547972
+      ],
+      "color": "#b58b2a",
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "SAM3",
+      "bounding": [
+        -372.81511820872703,
+        5682.304176821182,
+        333.8751937500001,
+        1032.2327893790198
+      ],
+      "color": "#b06634",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {
+      "scale": 0.826446280991736,
+      "offset": [
+        1833.8008825338627,
+        -5464.74609464618
+      ]
+    },
+    "links_added_by_ue": [],
+    "frontendVersion": "1.48.7",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
