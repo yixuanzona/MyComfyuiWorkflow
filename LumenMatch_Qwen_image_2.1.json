@@ -1,0 +1,2052 @@
+{
+  "id": "54bb395d-3e60-4c94-b525-85523901575b",
+  "revision": 0,
+  "last_node_id": 527,
+  "last_link_id": 808,
+  "nodes": [
+    {
+      "id": 13,
+      "type": "ResolutionSelector",
+      "pos": [
+        -957.6932492236806,
+        3289.9020021733672
+      ],
+      "size": [
+        274.32519152310374,
+        150
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            741
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            742
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ResolutionSelector",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "1:1 (Square)",
+        2,
+        32
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "1:1 (Square)",
+        "megapixels": 2,
+        "multiple": 32
+      }
+    },
+    {
+      "id": 461,
+      "type": "SaveImageAdvanced",
+      "pos": [
+        1597.2403784626597,
+        2359.8396171643726
+      ],
+      "size": [
+        338.3464117691483,
+        376.45166726508705
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 803
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            770
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImageAdvanced",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "Qwen_image_2.1",
+        "png",
+        "8-bit",
+        "sRGB"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "Qwen_image_2.1",
+        "format": "png",
+        "format.bit_depth": "8-bit",
+        "format.input_color_space": "sRGB"
+      }
+    },
+    {
+      "id": 463,
+      "type": "MarkdownNote",
+      "pos": [
+        -3073.530887002538,
+        4116.500278923547
+      ],
+      "size": [
+        493.5584454699074,
+        777.1475880493476
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note: Usage",
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "## Size\nQwen Image 2.1 has native 2K (2048*2048) support for direct output.\n\n- resolution is a total pixel budget (not width or height). Aspect ratio is preserved.\n- Official default is 1024. The model supports up to 2048.\n- This template starts at 0: no resize beyond a multiple of 32.\n- Output follows image_1. Extra refs can differ in size or aspect.\n- custom_size off: canvas comes from the encode latent (image_1).\n- custom_size on: use ResolutionSelector width/height. Keep it close to the resized image_1 size, or the edit can shift.\n\n## Reference images\n- Up to 10 reference images (image_1 to image_10).\n- Mention them in the prompt as `<image1>`, `<image2>`, ...\n- image_1 is the edit target. The rest are references.\n\n## Custom settings\nIf you need custom settings, enter or unpack the subgraph to edit it. See the [Subgraph](https://docs.comfy.org/interface/features/subgraph) guide.\n\n## Parameters\n- prompt: edit instruction. Use `<image1>` ... `<image10>`.\n- negative_prompt: unused while cfg is 1.\n- cfg: keep 1 for the Qwen Image 2.1 official path. Raise it only if you use a negative prompt.\n- steps: Qwen Image 2.1 official pipeline uses about 40-50 with euler. This template starts at 25. More advanced samplers need fewer steps."
+      ],
+      "widgets_values_named": {
+        "text": "## Size\nQwen Image 2.1 has native 2K (2048*2048) support for direct output.\n\n- resolution is a total pixel budget (not width or height). Aspect ratio is preserved.\n- Official default is 1024. The model supports up to 2048.\n- This template starts at 0: no resize beyond a multiple of 32.\n- Output follows image_1. Extra refs can differ in size or aspect.\n- custom_size off: canvas comes from the encode latent (image_1).\n- custom_size on: use ResolutionSelector width/height. Keep it close to the resized image_1 size, or the edit can shift.\n\n## Reference images\n- Up to 10 reference images (image_1 to image_10).\n- Mention them in the prompt as `<image1>`, `<image2>`, ...\n- image_1 is the edit target. The rest are references.\n\n## Custom settings\nIf you need custom settings, enter or unpack the subgraph to edit it. See the [Subgraph](https://docs.comfy.org/interface/features/subgraph) guide.\n\n## Parameters\n- prompt: edit instruction. Use `<image1>` ... `<image10>`.\n- negative_prompt: unused while cfg is 1.\n- cfg: keep 1 for the Qwen Image 2.1 official path. Raise it only if you use a negative prompt.\n- steps: Qwen Image 2.1 official pipeline uses about 40-50 with euler. This template starts at 25. More advanced samplers need fewer steps."
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 475,
+      "type": "LoadImage",
+      "pos": [
+        -1816.839476242689,
+        2440.4227513972805
+      ],
+      "size": [
+        421.0847184060376,
+        437.3738526174466
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            755,
+            771
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "pasted/image (70).png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "pasted/image (70).png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 476,
+      "type": "MarkdownNote",
+      "pos": [
+        -3076.290606210019,
+        3437.8207002583385
+      ],
+      "size": [
+        420,
+        620
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note: Model links",
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "Guide: [Subgraph](https://docs.comfy.org/interface/features/subgraph)\n\n## Input Assets\n\n- [portrait_model_denim.png](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/input/portrait_model_denim.png)\n- [clothing_light_blue_denim_shirt.png](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/input/clothing_light_blue_denim_shirt.png)\n\n\n## Model Links\n\n- [Hugging Face:Comfy-Org/Qwen-Image-2.1](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)\n- [ModelScope:Comfy-Org/Qwen-Image-2.1](https://modelscope.cn/models/Comfy-Org/Qwen-Image-2.1)\n\n**diffusion_models**\n\n- [qwen_image_2.1_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_bf16.safetensors)\n- [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors)\n\n**text_encoders**\n\n- [qwen3vl_8b_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_bf16.safetensors)\n- [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) \n\n**vae**\n\n- [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │   ├── qwen_image_2.1_bf16.safetensors\n│   │   └── qwen_image_2.1_int8_convrot.safetensors\n│   ├── 📂 text_encoders/\n│   │   ├── qwen3vl_8b_bf16.safetensors\n│   │   └── qwen3vl_8b_int8_convrot.safetensors\n│   └── 📂 vae/\n│       └── qwen_image_2.1_vae_bf16.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud updates follow stable releases, so some nightly-supported models may not be available yet.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
+      ],
+      "widgets_values_named": {
+        "text": "Guide: [Subgraph](https://docs.comfy.org/interface/features/subgraph)\n\n## Input Assets\n\n- [portrait_model_denim.png](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/input/portrait_model_denim.png)\n- [clothing_light_blue_denim_shirt.png](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/input/clothing_light_blue_denim_shirt.png)\n\n\n## Model Links\n\n- [Hugging Face:Comfy-Org/Qwen-Image-2.1](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)\n- [ModelScope:Comfy-Org/Qwen-Image-2.1](https://modelscope.cn/models/Comfy-Org/Qwen-Image-2.1)\n\n**diffusion_models**\n\n- [qwen_image_2.1_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_bf16.safetensors)\n- [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors)\n\n**text_encoders**\n\n- [qwen3vl_8b_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_bf16.safetensors)\n- [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) \n\n**vae**\n\n- [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │   ├── qwen_image_2.1_bf16.safetensors\n│   │   └── qwen_image_2.1_int8_convrot.safetensors\n│   ├── 📂 text_encoders/\n│   │   ├── qwen3vl_8b_bf16.safetensors\n│   │   └── qwen3vl_8b_int8_convrot.safetensors\n│   └── 📂 vae/\n│       └── qwen_image_2.1_vae_bf16.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud updates follow stable releases, so some nightly-supported models may not be available yet.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/comfyanonymous/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 477,
+      "type": "UNETLoader",
+      "pos": [
+        -911.4193761028592,
+        2653.472309744397
+      ],
+      "size": [
+        510,
+        90
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            736
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        },
+        "models": [
+          {
+            "name": "qwen_image_2.1_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "QwenImage2.1\\qwen_image_2.1_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "QwenImage2.1\\qwen_image_2.1_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 478,
+      "type": "CLIPLoader",
+      "pos": [
+        -911.4193761028592,
+        2813.472309744397
+      ],
+      "size": [
+        510,
+        120
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            743
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        },
+        "models": [
+          {
+            "name": "qwen3vl_8b_int8_convrot.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen3vl_8b_int8_convrot.safetensors",
+        "qwen_image",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+        "type": "qwen_image",
+        "device": "default"
+      }
+    },
+    {
+      "id": 479,
+      "type": "VAELoader",
+      "pos": [
+        -911.4193761028592,
+        3013.472309744397
+      ],
+      "size": [
+        510,
+        70
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            731,
+            745
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        },
+        "models": [
+          {
+            "name": "qwen_image_2.1_vae_bf16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_image_2.1_vae_bf16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+      }
+    },
+    {
+      "id": 480,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -214.96740054361277,
+        3380.828339081111
+      ],
+      "size": [
+        210,
+        115.94608287206893
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 741
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 742
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            735
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 481,
+      "type": "VAEDecode",
+      "pos": [
+        660.7244527058057,
+        3215.5196140558814
+      ],
+      "size": [
+        230,
+        60
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 733
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 731
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            758
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      }
+    },
+    {
+      "id": 482,
+      "type": "KSampler",
+      "pos": [
+        573.9430668826132,
+        2869.667657135626
+      ],
+      "size": [
+        270,
+        270
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 737
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 738
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 739
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 752
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            733
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        425609987096009,
+        "fixed",
+        25,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 425609987096009,
+        "control_after_generate": "fixed",
+        "steps": 25,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 483,
+      "type": "ComfySwitchNode",
+      "pos": [
+        48.156713551377536,
+        3389.8915405908133
+      ],
+      "size": [
+        210,
+        90.81044567448271
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 740
+        },
+        {
+          "name": "on_true",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 735
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            752
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "switch": true
+      }
+    },
+    {
+      "id": 484,
+      "type": "QwenImage21Cache",
+      "pos": [
+        556.0131879903894,
+        2711.372247373581
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 736
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            737
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QwenImage21Cache",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "auto",
+        "default"
+      ],
+      "widgets_values_named": {
+        "device": "auto",
+        "dtype": "default"
+      }
+    },
+    {
+      "id": 485,
+      "type": "TextEncodeQwenImage21",
+      "pos": [
+        -227.93643669157595,
+        2611.5028061704916
+      ],
+      "size": [
+        494.65722519918836,
+        714.8384450025051
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 743
+        },
+        {
+          "name": "images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 755
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 745
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 808
+        },
+        {
+          "name": "images.image_11",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "images.image_12",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 774
+        },
+        {
+          "name": "images.image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            738
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            739
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            740
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TextEncodeQwenImage21",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "Use the color tone of <image2> as reference. Remove the original lighting from <image1>, and re-light <image1> according to the light source positions, light direction, and color tone of <image2>. At the same time, replace the background of <image1> with <image2>, so that <image1> blends naturally into the environment of <image2>.",
+        "",
+        1024
+      ],
+      "widgets_values_named": {
+        "prompt": "Use the color tone of <image2> as reference. Remove the original lighting from <image1>, and re-light <image1> according to the light source positions, light direction, and color tone of <image2>. At the same time, replace the background of <image1> with <image2>, so that <image1> blends naturally into the environment of <image2>.",
+        "negative_prompt": "",
+        "resolution": 1024
+      }
+    },
+    {
+      "id": 487,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        1238.08321437186,
+        2825.373959055273
+      ],
+      "size": [
+        712.2490372592805,
+        1059.7924746603207
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 770
+        },
+        {
+          "dir": 3,
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 771
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "images",
+          "shape": 3,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "comparer_mode": "Slide",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_vrnho_00113_.png&type=temp&subfolder=&rand=0.8840884405346313"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_vrnho_00114_.png&type=temp&subfolder=&rand=0.5321453557682394"
+          }
+        ]
+      ],
+      "widgets_values_named": {
+        "rgthree_comparer": {
+          "images": [
+            {
+              "name": "A",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_vrnho_00113_.png&type=temp&subfolder=&rand=0.8840884405346313",
+              "img": {}
+            },
+            {
+              "name": "B",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_vrnho_00114_.png&type=temp&subfolder=&rand=0.5321453557682394",
+              "img": {}
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 488,
+      "type": "easy cleanGpuUsed",
+      "pos": [
+        1201.4488049088957,
+        2414.914707229099
+      ],
+      "size": [
+        161.3404296875,
+        26
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "anything",
+          "type": "*",
+          "link": 758
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "*",
+          "links": [
+            802
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy cleanGpuUsed",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      }
+    },
+    {
+      "id": 502,
+      "type": "RefBookImage",
+      "pos": [
+        -1791.4638348256192,
+        3032.928111286123
+      ],
+      "size": [
+        404.9401513003322,
+        509
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            774,
+            775,
+            804
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RefBookImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "{\"p\":\"p_9rf0hb\",\"e\":\"e_ir7jmc\",\"r\":\"r_wrnn1y\",\"path\":[\"Kana\",\"Background\",\"MunchaRoom\",\"image\"]}"
+      ],
+      "widgets_values_named": {
+        "ref": "{\"p\":\"p_9rf0hb\",\"e\":\"e_ir7jmc\",\"r\":\"r_wrnn1y\",\"path\":[\"Kana\",\"Background\",\"MunchaRoom\",\"image\"]}"
+      }
+    },
+    {
+      "id": 504,
+      "type": "AILab_QwenVL",
+      "pos": [
+        -1937.4075450365867,
+        3777.4534406979105
+      ],
+      "size": [
+        386.81730024497915,
+        569.7568252210717
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 775
+        },
+        {
+          "name": "video",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RESPONSE",
+          "type": "STRING",
+          "links": [
+            776,
+            791
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AILab_QwenVL",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "Qwen3-VL-4B-Instruct",
+        "None (FP16)",
+        "auto",
+        "🖼️ Simple Description",
+        "You are a lighting analyst for film and CG compositing. Analyze the provided image and describe ONLY its scene type and lighting. Do NOT describe characters, clothing, or small objects.\n\nOutput exactly in this format, one field per line:\n\nScene: [one short phrase, e.g. train station platform, school classroom, office, night street, indoor/outdoor]\nLight sources: [number of sources, type of each (ceiling lamp / fluorescent tube / window / neon / sun / street lamp), position in frame (e.g. upper left, top center, two lamps on the ceiling)]\nLight direction: [for each source, the direction the light travels, e.g. from upper left toward lower right, straight down from above]\nLight color: [color and warmth of each source, e.g. warm orange, cool white, blue; approximate intensity: soft / medium / strong]\nShadow behavior: [shadow direction, softness (hard / soft), contrast (low / high)]\nAmbient color tone: [overall environment color tone; dominant colors reflected from walls, floor, and surroundings]\nSubject lighting: [how a character standing in this scene would be lit: which surfaces get highlights, where rim light appears, which side falls into shadow]\n\nRules:\n- Be concrete and physical. Do not use vague terms like \"nice lighting\" or \"moody tone\".\n- Use directions relative to the image frame (left, right, top, bottom, front, behind).\n- Keep each field under 25 words.\n- No introduction, no conclusion, no extra explanation.",
+        400,
+        false,
+        2669184122,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "model_name": "Qwen3-VL-4B-Instruct",
+        "quantization": "None (FP16)",
+        "attention_mode": "auto",
+        "preset_prompt": "🖼️ Simple Description",
+        "custom_prompt": "You are a lighting analyst for film and CG compositing. Analyze the provided image and describe ONLY its scene type and lighting. Do NOT describe characters, clothing, or small objects.\n\nOutput exactly in this format, one field per line:\n\nScene: [one short phrase, e.g. train station platform, school classroom, office, night street, indoor/outdoor]\nLight sources: [number of sources, type of each (ceiling lamp / fluorescent tube / window / neon / sun / street lamp), position in frame (e.g. upper left, top center, two lamps on the ceiling)]\nLight direction: [for each source, the direction the light travels, e.g. from upper left toward lower right, straight down from above]\nLight color: [color and warmth of each source, e.g. warm orange, cool white, blue; approximate intensity: soft / medium / strong]\nShadow behavior: [shadow direction, softness (hard / soft), contrast (low / high)]\nAmbient color tone: [overall environment color tone; dominant colors reflected from walls, floor, and surroundings]\nSubject lighting: [how a character standing in this scene would be lit: which surfaces get highlights, where rim light appears, which side falls into shadow]\n\nRules:\n- Be concrete and physical. Do not use vague terms like \"nice lighting\" or \"moody tone\".\n- Use directions relative to the image frame (left, right, top, bottom, front, behind).\n- Keep each field under 25 words.\n- No introduction, no conclusion, no extra explanation.",
+        "max_tokens": 400,
+        "keep_model_loaded": false,
+        "seed": 2669184122,
+        "control_after_generate": "fixed"
+      },
+      "color": "#28403f",
+      "bgcolor": "#374539"
+    },
+    {
+      "id": 505,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -1518.1251849861117,
+        3884.343402033617
+      ],
+      "size": [
+        360.7101297263316,
+        461.2894225158202
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 776
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "Scene: empty room with spotlight\nLight sources: one spotlamp at top center\nLight direction: downward from top center onto floor\nLight color: strong warm yellow-orange\nShadow behavior: soft shadows cast outward, low contrast\nAmbient color tone: dark brownish-gray\nSubject lighting: face illuminated by beam, back softly lit, ground brightly highlighted"
+      ],
+      "widgets_values_named": {
+        "text_0": "Scene: empty room with spotlight\nLight sources: one spotlamp at top center\nLight direction: downward from top center onto floor\nLight color: strong warm yellow-orange\nShadow behavior: soft shadows cast outward, low contrast\nAmbient color tone: dark brownish-gray\nSubject lighting: face illuminated by beam, back softly lit, ground brightly highlighted"
+      }
+    },
+    {
+      "id": 506,
+      "type": "Text Concatenate",
+      "pos": [
+        -603.0229262328197,
+        3698.30079126541
+      ],
+      "size": [
+        270,
+        142
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "shape": 7,
+          "type": "STRING",
+          "link": 777
+        },
+        {
+          "name": "text_b",
+          "shape": 7,
+          "type": "STRING",
+          "link": 791
+        },
+        {
+          "name": "text_c",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "text_d",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            789,
+            790
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Text Concatenate",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "",
+        "false"
+      ],
+      "widgets_values_named": {
+        "delimiter": "",
+        "clean_whitespace": "false"
+      }
+    },
+    {
+      "id": 508,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -755.7156056400921,
+        3940.1459940094796
+      ],
+      "size": [
+        434.20038008842835,
+        341.92607378316063
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 789
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "Lighting analysis of Image 2:\n\nScene: empty room with spotlight\nLight sources: one spotlamp at top center\nLight direction: downward from top center onto floor\nLight color: strong warm yellow-orange\nShadow behavior: soft shadows cast outward, low contrast\nAmbient color tone: dark brownish-gray\nSubject lighting: face illuminated by beam, back softly lit, ground brightly highlighted"
+      ],
+      "widgets_values_named": {
+        "text_0": "Lighting analysis of Image 2:\n\nScene: empty room with spotlight\nLight sources: one spotlamp at top center\nLight direction: downward from top center onto floor\nLight color: strong warm yellow-orange\nShadow behavior: soft shadows cast outward, low contrast\nAmbient color tone: dark brownish-gray\nSubject lighting: face illuminated by beam, back softly lit, ground brightly highlighted"
+      }
+    },
+    {
+      "id": 509,
+      "type": "PrimitiveInt",
+      "pos": [
+        -593.1928221239053,
+        4349.556079555727
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            782,
+            786
+          ]
+        }
+      ],
+      "title": "Context Length",
+      "properties": {
+        "Node name for S&R": "PrimitiveInt",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        14000,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 14000,
+        "fixed": "fixed"
+      }
+    },
+    {
+      "id": 510,
+      "type": "EbuLMStudioLoadModel",
+      "pos": [
+        -259.7489165440683,
+        3689.697267147602
+      ],
+      "size": [
+        315,
+        218
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_string",
+          "type": "STRING",
+          "widget": {
+            "name": "input_string"
+          },
+          "link": 790
+        },
+        {
+          "name": "context_length",
+          "type": "INT",
+          "widget": {
+            "name": "context_length"
+          },
+          "link": 782
+        }
+      ],
+      "outputs": [
+        {
+          "name": "export_string",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            785
+          ]
+        },
+        {
+          "name": "model_selected",
+          "type": "STRING",
+          "slot_index": 1,
+          "links": [
+            784
+          ]
+        },
+        {
+          "name": "models_found",
+          "type": "STRING",
+          "slot_index": 2,
+          "links": [
+            783
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EbuLMStudioLoadModel",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "input_string": true
+          },
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "",
+        "Qwen 3.5",
+        14000,
+        224745284090149,
+        "randomize",
+        true
+      ],
+      "widgets_values_named": {
+        "input_string": "",
+        "model_search_string": "Qwen 3.5",
+        "context_length": 14000,
+        "seed": 224745284090149,
+        "control_after_generate": "randomize",
+        "unload_image_models_first": true
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 511,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -91.48194082082509,
+        3968.3059391459506
+      ],
+      "size": [
+        472.24285888671875,
+        366.3433837890625
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 783
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "[\n  {\n    \"type\": \"llm\",\n    \"modelKey\": \"qwen/qwen3.5-9b\",\n    \"format\": \"gguf\",\n    \"displayName\": \"Qwen3.5 9B\",\n    \"publisher\": \"qwen\",\n    \"path\": \"qwen/qwen3.5-9b\",\n    \"sizeBytes\": 6548927711,\n    \"indexedModelIdentifier\": \"qwen/qwen3.5-9b\",\n    \"deviceIdentifier\": null,\n    \"paramsString\": \"9B\",\n    \"architecture\": \"qwen35\",\n    \"quantization\": {\n      \"name\": \"Q4_K_M\",\n      \"bits\": 4\n    },\n    \"variants\": [\n      \"qwen/qwen3.5-9b@q4_k_m\"\n    ],\n    \"selectedVariant\": \"qwen/qwen3.5-9b@q4_k_m\",\n    \"vision\": true,\n    \"trainedForToolUse\": true,\n    \"maxContextLength\": 262144\n  },\n  {\n    \"type\": \"llm\",\n    \"modelKey\": \"google/gemma-4-12b-qat\",\n    \"format\": \"gguf\",\n    \"displayName\": \"Gemma 4 12B QAT\",\n    \"publisher\": \"google\",\n    \"path\": \"google/gemma-4-12b-qat\",\n    \"sizeBytes\": 7151067268,\n    \"indexedModelIdentifier\": \"google/gemma-4-12b-qat\",\n    \"deviceIdentifier\": null,\n    \"paramsString\": \"12B\",\n    \"architecture\": \"gemma4\",\n    \"quantization\": {\n      \"name\": \"Q4_0\",\n      \"bits\": 4\n    },\n    \"variants\": [\n      \"google/gemma-4-12b-qat@q4_0\"\n    ],\n    \"selectedVariant\": \"google/gemma-4-12b-qat@q4_0\",\n    \"vision\": true,\n    \"trainedForToolUse\": true,\n    \"maxContextLength\": 262144\n  },\n  {\n    \"type\": \"llm\",\n    \"modelKey\": \"qwen/qwen3.8-27b\",\n    \"format\": \"gguf\",\n    \"displayName\": \"Qwen3.8 27B\",\n    \"publisher\": \"qwen\",\n    \"path\": \"qwen/qwen3.8-27b\",\n    \"sizeBytes\": 17742040464,\n    \"indexedModelIdentifier\": \"qwen/qwen3.8-27b\",\n    \"deviceIdentifier\": null,\n    \"paramsString\": \"27B\",\n    \"architecture\": \"qwen35\",\n    \"quantization\": {\n      \"name\": \"Q4_K_M\",\n      \"bits\": 4\n    },\n    \"variants\": [\n      \"qwen/qwen3.8-27b@q4_k_m\"\n    ],\n    \"selectedVariant\": \"qwen/qwen3.8-27b@q4_k_m\",\n    \"vision\": true,\n    \"trainedForToolUse\": true,\n    \"maxContextLength\": 262144\n  }\n]"
+      ],
+      "widgets_values_named": {
+        "text_0": "[\n  {\n    \"type\": \"llm\",\n    \"modelKey\": \"qwen/qwen3.5-9b\",\n    \"format\": \"gguf\",\n    \"displayName\": \"Qwen3.5 9B\",\n    \"publisher\": \"qwen\",\n    \"path\": \"qwen/qwen3.5-9b\",\n    \"sizeBytes\": 6548927711,\n    \"indexedModelIdentifier\": \"qwen/qwen3.5-9b\",\n    \"deviceIdentifier\": null,\n    \"paramsString\": \"9B\",\n    \"architecture\": \"qwen35\",\n    \"quantization\": {\n      \"name\": \"Q4_K_M\",\n      \"bits\": 4\n    },\n    \"variants\": [\n      \"qwen/qwen3.5-9b@q4_k_m\"\n    ],\n    \"selectedVariant\": \"qwen/qwen3.5-9b@q4_k_m\",\n    \"vision\": true,\n    \"trainedForToolUse\": true,\n    \"maxContextLength\": 262144\n  },\n  {\n    \"type\": \"llm\",\n    \"modelKey\": \"google/gemma-4-12b-qat\",\n    \"format\": \"gguf\",\n    \"displayName\": \"Gemma 4 12B QAT\",\n    \"publisher\": \"google\",\n    \"path\": \"google/gemma-4-12b-qat\",\n    \"sizeBytes\": 7151067268,\n    \"indexedModelIdentifier\": \"google/gemma-4-12b-qat\",\n    \"deviceIdentifier\": null,\n    \"paramsString\": \"12B\",\n    \"architecture\": \"gemma4\",\n    \"quantization\": {\n      \"name\": \"Q4_0\",\n      \"bits\": 4\n    },\n    \"variants\": [\n      \"google/gemma-4-12b-qat@q4_0\"\n    ],\n    \"selectedVariant\": \"google/gemma-4-12b-qat@q4_0\",\n    \"vision\": true,\n    \"trainedForToolUse\": true,\n    \"maxContextLength\": 262144\n  },\n  {\n    \"type\": \"llm\",\n    \"modelKey\": \"qwen/qwen3.8-27b\",\n    \"format\": \"gguf\",\n    \"displayName\": \"Qwen3.8 27B\",\n    \"publisher\": \"qwen\",\n    \"path\": \"qwen/qwen3.8-27b\",\n    \"sizeBytes\": 17742040464,\n    \"indexedModelIdentifier\": \"qwen/qwen3.8-27b\",\n    \"deviceIdentifier\": null,\n    \"paramsString\": \"27B\",\n    \"architecture\": \"qwen35\",\n    \"quantization\": {\n      \"name\": \"Q4_K_M\",\n      \"bits\": 4\n    },\n    \"variants\": [\n      \"qwen/qwen3.8-27b@q4_k_m\"\n    ],\n    \"selectedVariant\": \"qwen/qwen3.8-27b@q4_k_m\",\n    \"vision\": true,\n    \"trainedForToolUse\": true,\n    \"maxContextLength\": 262144\n  }\n]"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 512,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -215.77662544706786,
+        4027.4060806978077
+      ],
+      "size": [
+        261.2434999999998,
+        88
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 784
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "qwen3.5-9b"
+      ],
+      "widgets_values_named": {
+        "text_0": "qwen3.5-9b"
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 513,
+      "type": "EbuLMStudioMakeRequest",
+      "pos": [
+        103.76470301690938,
+        3683.8817716776325
+      ],
+      "size": [
+        522.0600265116489,
+        1179.8971252304536
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 785
+        },
+        {
+          "name": "context_length",
+          "type": "INT",
+          "widget": {
+            "name": "context_length"
+          },
+          "link": 786
+        }
+      ],
+      "outputs": [
+        {
+          "name": "generated_text",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            787
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EbuLMStudioMakeRequest",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "prompt": true
+          },
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "",
+        "/no_think\nYou are a prompt writer for an image editing model (Qwen Image Edit). Your job is to turn a lighting analysis of a background image into one final editing prompt.\n\nContext:\n- <image1> is the subject (a character or object) whose original lighting must be removed.\n- <image2> is the new background and the lighting reference.\n- The user message contains a lighting analysis of <image2> with these fields: Scene, Light sources, Light direction, Light color, Shadow behavior, Ambient color tone, Subject lighting.\n\nWrite ONE English prompt that does all of the following, in this order:\n0. Start with one short sentence stating where the scene is, based on the Scene field of the analysis (e.g. \"The scene is a small shop interior.\" or \"The scene is an indoor train station platform.\"). Do not add details that are not in the analysis.\n1. Remove all original lighting, shadows, and color cast from the subject in <image1>.\n2. Replace the background of <image1> with <image2>.\n3. Re-light the subject so it looks physically lit by the lights in <image2>. Use the analysis fields to state concrete effects:\n   - strong directional highlights on the surfaces facing each light source, naming the actual position and direction of the lights\n   - clear rim light along the contours facing the light sources\n   - a visible separation between the lit side and the shadow side\n   - cast shadows on the ground and soft contact shadows under the subject, consistent with the light direction\n   - ambient bounce light and colored reflections from the surroundings, matching the ambient color tone\n4. End by stating that the subject must look truly lit by the scene's light sources, not just color graded, with consistent light direction, intensity, and color temperature.\n\nRules:\n- Refer to the images only as `<image1>` and `<image2>`, exactly in this format, including the angle brackets. Never write \"Image 1\", \"image 2\", \"the first image\", or \"the background image\".\n- Use only information from the analysis. Do not invent light sources that are not listed.\n- Use concrete directional wording (upper left, straight down from above, from the right). Avoid vague words like \"natural\", \"subtle\", \"nice\", \"moody\".\n- Use strong wording for the lighting effects (strong, pronounced, clearly visible).\n- Do not change the subject's identity, pose, clothing, or design. Only change lighting and background.\n- If there are multiple light sources, mention each one's highlight and rim light separately.\n- Length: 80 to 120 words, one paragraph.\n- Output only the final prompt. No title, no quotes, no explanation, no notes.",
+        "http://localhost:1234/v1/chat/completions",
+        17309,
+        1098520093276706,
+        "randomize",
+        2500,
+        0.4,
+        0.9500000000000001,
+        false
+      ],
+      "widgets_values_named": {
+        "prompt": "",
+        "system_message": "/no_think\nYou are a prompt writer for an image editing model (Qwen Image Edit). Your job is to turn a lighting analysis of a background image into one final editing prompt.\n\nContext:\n- <image1> is the subject (a character or object) whose original lighting must be removed.\n- <image2> is the new background and the lighting reference.\n- The user message contains a lighting analysis of <image2> with these fields: Scene, Light sources, Light direction, Light color, Shadow behavior, Ambient color tone, Subject lighting.\n\nWrite ONE English prompt that does all of the following, in this order:\n0. Start with one short sentence stating where the scene is, based on the Scene field of the analysis (e.g. \"The scene is a small shop interior.\" or \"The scene is an indoor train station platform.\"). Do not add details that are not in the analysis.\n1. Remove all original lighting, shadows, and color cast from the subject in <image1>.\n2. Replace the background of <image1> with <image2>.\n3. Re-light the subject so it looks physically lit by the lights in <image2>. Use the analysis fields to state concrete effects:\n   - strong directional highlights on the surfaces facing each light source, naming the actual position and direction of the lights\n   - clear rim light along the contours facing the light sources\n   - a visible separation between the lit side and the shadow side\n   - cast shadows on the ground and soft contact shadows under the subject, consistent with the light direction\n   - ambient bounce light and colored reflections from the surroundings, matching the ambient color tone\n4. End by stating that the subject must look truly lit by the scene's light sources, not just color graded, with consistent light direction, intensity, and color temperature.\n\nRules:\n- Refer to the images only as `<image1>` and `<image2>`, exactly in this format, including the angle brackets. Never write \"Image 1\", \"image 2\", \"the first image\", or \"the background image\".\n- Use only information from the analysis. Do not invent light sources that are not listed.\n- Use concrete directional wording (upper left, straight down from above, from the right). Avoid vague words like \"natural\", \"subtle\", \"nice\", \"moody\".\n- Use strong wording for the lighting effects (strong, pronounced, clearly visible).\n- Do not change the subject's identity, pose, clothing, or design. Only change lighting and background.\n- If there are multiple light sources, mention each one's highlight and rim light separately.\n- Length: 80 to 120 words, one paragraph.\n- Output only the final prompt. No title, no quotes, no explanation, no notes.",
+        "url": "http://localhost:1234/v1/chat/completions",
+        "context_length": 17309,
+        "seed": 1098520093276706,
+        "control_after_generate": "randomize",
+        "max_tokens": 2500,
+        "temp": 0.4,
+        "top_p": 0.9500000000000001,
+        "utf8_safe_replace": false
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 514,
+      "type": "EbuLMStudioUnload",
+      "pos": [
+        682.3155665747194,
+        3688.1998886374636
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_string",
+          "type": "STRING",
+          "widget": {
+            "name": "input_string"
+          },
+          "link": 787
+        }
+      ],
+      "outputs": [
+        {
+          "name": "export_string",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            788,
+            808
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EbuLMStudioUnload",
+        "ue_properties": {
+          "widget_ue_connectable": {
+            "input_string": true
+          },
+          "version": "7.8",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "",
+        1021518145426612,
+        "randomize"
+      ],
+      "widgets_values_named": {
+        "input_string": "",
+        "seed": 1021518145426612,
+        "control_after_generate": "randomize"
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 515,
+      "type": "ShowText|pysssss",
+      "pos": [
+        661.1156256446397,
+        3867.280430868496
+      ],
+      "size": [
+        452.5419198102413,
+        778.8696548051397
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 788
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "The scene is an empty room with spotlight. Remove all original lighting, shadows, and color cast from the subject in <image1>. Replace the background of <image1> with <image2>. Re-light the subject so it looks physically lit by the lights in <image2>, featuring strong directional highlights on surfaces facing the single spotlamp at top center, clear rim light along contours facing downward from top center, a visible separation between the lit side and shadow side, cast shadows on the ground and soft contact shadows under the subject consistent with the downward direction, and ambient bounce light with colored reflections matching the dark brownish-gray ambient tone. The face must be illuminated by the beam, back softly lit, and ground brightly highlighted. Ensure the subject looks truly lit by the scene's light sources, not just color graded, with consistent light direction, intensity, and warm yellow-orange color temperature from the spotlight."
+      ],
+      "widgets_values_named": {
+        "text_0": "The scene is an empty room with spotlight. Remove all original lighting, shadows, and color cast from the subject in <image1>. Replace the background of <image1> with <image2>. Re-light the subject so it looks physically lit by the lights in <image2>, featuring strong directional highlights on surfaces facing the single spotlamp at top center, clear rim light along contours facing downward from top center, a visible separation between the lit side and shadow side, cast shadows on the ground and soft contact shadows under the subject consistent with the downward direction, and ambient bounce light with colored reflections matching the dark brownish-gray ambient tone. The face must be illuminated by the beam, back softly lit, and ground brightly highlighted. Ensure the subject looks truly lit by the scene's light sources, not just color graded, with consistent light direction, intensity, and warm yellow-orange color temperature from the spotlight."
+      }
+    },
+    {
+      "id": 516,
+      "type": "ScenePromptText",
+      "pos": [
+        -1051.388819771476,
+        3696.4589029913545
+      ],
+      "size": [
+        387.3105099999998,
+        139.34776000000016
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            777
+          ]
+        }
+      ],
+      "title": "Title / Lighting analysis of Image 2",
+      "properties": {
+        "Node name for S&R": "ScenePromptText",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "Lighting analysis of Image 2:\n\n"
+      ],
+      "widgets_values_named": {
+        "text": "Lighting analysis of Image 2:\n\n"
+      },
+      "color": "#c09430",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 526,
+      "type": "ColorMatchV2",
+      "pos": [
+        1195.2235405400172,
+        2512.6988250483155
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_target",
+          "type": "IMAGE",
+          "link": 802
+        },
+        {
+          "name": "image_ref",
+          "type": "IMAGE",
+          "link": 804
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            803
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ColorMatchV2",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.8"
+        }
+      },
+      "widgets_values": [
+        "mkl",
+        1,
+        true
+      ],
+      "widgets_values_named": {
+        "method": "mkl",
+        "strength": 1,
+        "multithread": true
+      }
+    }
+  ],
+  "links": [
+    [
+      731,
+      479,
+      0,
+      481,
+      1,
+      "VAE"
+    ],
+    [
+      733,
+      482,
+      0,
+      481,
+      0,
+      "LATENT"
+    ],
+    [
+      735,
+      480,
+      0,
+      483,
+      1,
+      "LATENT"
+    ],
+    [
+      736,
+      477,
+      0,
+      484,
+      0,
+      "MODEL"
+    ],
+    [
+      737,
+      484,
+      0,
+      482,
+      0,
+      "MODEL"
+    ],
+    [
+      738,
+      485,
+      0,
+      482,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      739,
+      485,
+      1,
+      482,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      740,
+      485,
+      2,
+      483,
+      0,
+      "LATENT"
+    ],
+    [
+      741,
+      13,
+      0,
+      480,
+      0,
+      "INT"
+    ],
+    [
+      742,
+      13,
+      1,
+      480,
+      1,
+      "INT"
+    ],
+    [
+      752,
+      483,
+      0,
+      482,
+      3,
+      "LATENT"
+    ],
+    [
+      758,
+      481,
+      0,
+      488,
+      0,
+      "IMAGE"
+    ],
+    [
+      770,
+      461,
+      0,
+      487,
+      0,
+      "IMAGE"
+    ],
+    [
+      771,
+      475,
+      0,
+      487,
+      1,
+      "IMAGE"
+    ],
+    [
+      775,
+      502,
+      0,
+      504,
+      0,
+      "IMAGE"
+    ],
+    [
+      776,
+      504,
+      0,
+      505,
+      0,
+      "STRING"
+    ],
+    [
+      777,
+      516,
+      0,
+      506,
+      0,
+      "STRING"
+    ],
+    [
+      782,
+      509,
+      0,
+      510,
+      1,
+      "INT"
+    ],
+    [
+      783,
+      510,
+      2,
+      511,
+      0,
+      "STRING"
+    ],
+    [
+      784,
+      510,
+      1,
+      512,
+      0,
+      "STRING"
+    ],
+    [
+      785,
+      510,
+      0,
+      513,
+      0,
+      "STRING"
+    ],
+    [
+      786,
+      509,
+      0,
+      513,
+      1,
+      "INT"
+    ],
+    [
+      787,
+      513,
+      0,
+      514,
+      0,
+      "STRING"
+    ],
+    [
+      788,
+      514,
+      0,
+      515,
+      0,
+      "STRING"
+    ],
+    [
+      789,
+      506,
+      0,
+      508,
+      0,
+      "STRING"
+    ],
+    [
+      790,
+      506,
+      0,
+      510,
+      0,
+      "STRING"
+    ],
+    [
+      791,
+      504,
+      0,
+      506,
+      1,
+      "STRING"
+    ],
+    [
+      802,
+      488,
+      0,
+      526,
+      0,
+      "IMAGE"
+    ],
+    [
+      804,
+      502,
+      0,
+      526,
+      1,
+      "IMAGE"
+    ],
+    [
+      803,
+      526,
+      0,
+      461,
+      0,
+      "IMAGE"
+    ],
+    [
+      743,
+      478,
+      0,
+      485,
+      0,
+      "CLIP"
+    ],
+    [
+      755,
+      475,
+      0,
+      485,
+      1,
+      "IMAGE"
+    ],
+    [
+      745,
+      479,
+      0,
+      485,
+      2,
+      "VAE"
+    ],
+    [
+      774,
+      502,
+      0,
+      485,
+      6,
+      "IMAGE"
+    ],
+    [
+      808,
+      514,
+      0,
+      485,
+      3,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 43,
+      "title": "Qwen Image 2.1",
+      "bounding": [
+        -1029.1949948982442,
+        2379.7066202205433,
+        2059.4741842665753,
+        1162.5182078233383
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 38,
+      "title": "Models",
+      "bounding": [
+        -921.4193761028592,
+        2543.472309744397,
+        530,
+        590
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 39,
+      "title": "Image Size",
+      "bounding": [
+        -921.4193761028597,
+        3213.5052480625513,
+        530,
+        250
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 40,
+      "title": "Conditioning",
+      "bounding": [
+        -342.98618830143204,
+        2511.8725592276687,
+        700,
+        860
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 41,
+      "title": "Sampling",
+      "bounding": [
+        466.01318799038944,
+        2551.372247373581,
+        470,
+        860
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 42,
+      "title": "Light source analysis",
+      "bounding": [
+        -1980.0481208883352,
+        3633.270313762115,
+        868.2409665577354,
+        777.3518035506359
+      ],
+      "color": "#8AA",
+      "flags": {}
+    },
+    {
+      "id": 44,
+      "title": "LM Studio: Combine Prompt",
+      "bounding": [
+        -1061.388819771476,
+        3613.8817716776325,
+        2185.046365226357,
+        1259.897125230454
+      ],
+      "color": "#88A",
+      "flags": {}
+    },
+    {
+      "id": 45,
+      "title": "Main",
+      "bounding": [
+        -1894.1066636687326,
+        2358.552071263274,
+        621.1233671051546,
+        562.8781264644767
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    },
+    {
+      "id": 46,
+      "title": "Background / Light",
+      "bounding": [
+        -1891.3294636028388,
+        2961.2965215185127,
+        606.7521921893608,
+        597.407399689544
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.34522712143933193,
+      "offset": [
+        3163.808214490269,
+        -1841.058299897893
+      ]
+    },
+    "frontendVersion": "1.53.6",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "ue_links": [],
+    "links_added_by_ue": []
+  },
+  "version": 0.4
+}
